@@ -12,7 +12,7 @@ from linebot.models import (
 
 app = Flask(__name__)
 
-line_bot_api = LineBotApi('CEm7kfHBusASUk1P5pg5ZKHcWHKwEnXa7Jt6Bq03uyi3NybHzL8szf3N2kXZsfGU3Xi23ntNL5EQzmdvxkFCdnYmOngnBi/esI/L45IGP8qLb3e9d5hIr6vYLn6AwuXe29lcZy4X6OEYqGMo/xxdGAdBilt4OEYqGMo/xxdGAdBil')
+line_bot_api = LineBotApi('jHTFpro/fuoLRDwl0yGRBfGT2v7Xr4tWLw0d0zh6mnzcb41Q3oSX0zmbDzVN1wZz3Xi23ntNL5EQzmdvxkFCdnYmOngnBi/esI/L45IGP8pyxImK5af1lcQCyG89BLMzEnvH1RIiFgj2vjTRoUr47wdB04t89/1O/w1cDnyilFU=')   #I put my TOKEN
 handler = WebhookHandler('4f755a2f9e5814ac1a3fbfe98f8e2ed6')
 
 
@@ -29,7 +29,6 @@ def callback():
     try:
         handler.handle(body, signature)
     except InvalidSignatureError:
-        print("Invalid signature. Please check your channel access token/channel secret.")
         abort(400)
 
     return 'OK'
@@ -37,7 +36,6 @@ def callback():
 
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
-    msg = event.message.text 
     line_bot_api.reply_message(
         event.reply_token,
         TextSendMessage(text=event.message.text))
