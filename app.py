@@ -39,10 +39,8 @@ def handle_message(event):
     msg = event.message.text
     r = 'i can not undestand your msg'
 
-    if msg in ['i']:
+    if msg in ['robot']:
         r = 'i can hear you call me'
-    elif msg in ['f','u','s']:
-        r = 'you can not say bad word'
     elif msg == 'who are you' :
         r = 'i am a robot'
     elif msg in ['apex','Apex']:
