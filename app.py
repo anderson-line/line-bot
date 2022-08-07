@@ -36,9 +36,21 @@ def callback():
 
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
+    msg = event.message.text
+    r = 'i can not undestand your msg'
+
+    if msg in ['i']:
+        r = 'i can hear you call me'
+    elif msg in ['f','u','s']:
+        r = 'you can not say bad word'
+    elif msg == 'who are you' :
+        r = 'i am a robot'
+    elif msg in ['apex','Apex']:
+        r = 'i want to play apex too'
+
     line_bot_api.reply_message(
         event.reply_token,
-        TextSendMessage(text=event.message.text))
+        TextSendMessage(text=msg))
 
 
 if __name__ == "__main__":
